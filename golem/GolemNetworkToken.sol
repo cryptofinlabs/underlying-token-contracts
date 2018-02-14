@@ -1,6 +1,3 @@
-pragma solidity ^0.4.4;
-
-
 /// @title Golem Network Token (GNT) - crowdfunding code for Golem Project
 contract GolemNetworkToken {
     string public constant name = "Golem Network Token";

@@ -1,5 +1,3 @@
-pragma solidity ^0.4.11;
-
 contract TronToken {
 
     string public name = "Tronix";      //  token name

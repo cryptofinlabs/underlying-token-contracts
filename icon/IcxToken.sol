@@ -1,7 +1,3 @@
-// Added by dmdque
-pragma solidity ^0.4.11;
-
-
 contract ERC20 {
     function totalSupply() constant returns (uint supply);
     function balanceOf( address who ) constant returns (uint value);

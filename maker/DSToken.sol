@@ -1,8 +1,6 @@
 // MKR Token
 
 // hevm: flattened sources of src/mkr-499.sol
-pragma solidity ^0.4.15;
-
 ////// lib/ds-roles/lib/ds-auth/src/auth.sol
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by

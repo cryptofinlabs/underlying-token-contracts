@@ -1,5 +1,3 @@
-pragma solidity ^0.4.11;
-
 contract Token {
     function transfer(address to, uint256 value) returns (bool success);
     function transferFrom(address from, address to, uint256 value) returns (bool success);

@@ -1,5 +1,3 @@
-pragma solidity ^0.4.18;
-
 // File: zeppelin-solidity/contracts/math/SafeMath.sol
 
 /**

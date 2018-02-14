@@ -1,5 +1,3 @@
-pragma solidity 0.4.11;
-
 contract ERC20TokenInterface {
 
     /// @return The total amount of tokens

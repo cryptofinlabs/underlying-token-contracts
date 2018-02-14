@@ -16,8 +16,6 @@
 
 */
 
-pragma solidity 0.4.11;
-
 contract Token {
 
     /// @return total amount of tokens
