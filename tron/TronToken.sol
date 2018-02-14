@@ -37,6 +37,7 @@ contract TronToken {
 
     function transfer(address _to, uint256 _value) isRunning validAddress returns (bool success) {
         require(balanceOf[msg.sender] >= _value);
+        // dq: I guess this checks for _value = 0 and overflows
         require(balanceOf[_to] + _value >= balanceOf[_to]);
         balanceOf[msg.sender] -= _value;
         balanceOf[_to] += _value;
