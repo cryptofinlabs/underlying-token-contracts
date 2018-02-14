@@ -1,8 +1,11 @@
-// interesting bitwise logging
+pragma solidity ^0.4.11;
+
+// dq: Interesting bitwise logging
 contract DSNote {
     event LogNote(
-        // what are these for?  bytes4   indexed  sig,
-        // either bad name for user, or some acronym I don't understand
+        // dq: What are these for?
+        // dq: Wither bad name for user, or some acronym I don't understand
+        bytes4   indexed  sig,
         address  indexed  guy,
         bytes32  indexed  foo,
         bytes32  indexed  bar,
@@ -15,7 +18,7 @@ contract DSNote {
         bytes32 bar;
 
         assembly {
-            // gotta look into what exactly this does
+            // dq: Gotta look into what exactly this does
             foo := calldataload(4)
             bar := calldataload(36)
         }
@@ -26,8 +29,8 @@ contract DSNote {
     }
 }
 
-// Just an interface
-// Comes straight from https://github.com/dapphub/ds-token
+// dq: Just an interface
+// dq: Comes straight from https://github.com/dapphub/ds-token
 contract DSAuthority {
     function canCall(
         address src, address dst, bytes4 sig
@@ -40,10 +43,10 @@ contract DSAuthEvents {
 }
 
 contract DSAuth is DSAuthEvents {
-    // On the mainnet, this is set to 0x0
+    // dq: On the mainnet, this is set to 0x0
     DSAuthority  public  authority;
-    // Owner chain: 0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf -> 0x9937Dbb2128B55c44D8af7bF36FD76796A814Cf4 -> [0xc20580ab3d8d4f7cdca362a18e339399919c647d, 0x540f38eaa1eeb24aab5655034eea00f1b51cafef, 0x9c2b02c4083d3ab73421ccdf4e681b18ee7f316d]
-    // EOSTokenContract -> EOSCrowdSale -> EOS-Owner -> address[]
+    // dq: Owner chain: 0xd0a6E6C54DbC68Db5db3A091B171A77407Ff7ccf -> 0x9937Dbb2128B55c44D8af7bF36FD76796A814Cf4 -> [0xc20580ab3d8d4f7cdca362a18e339399919c647d, 0x540f38eaa1eeb24aab5655034eea00f1b51cafef, 0x9c2b02c4083d3ab73421ccdf4e681b18ee7f316d]
+    // dq: EOSTokenContract -> EOSCrowdSale -> EOS-Owner -> address[]
     address      public  owner;
 
     function DSAuth() {
