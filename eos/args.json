@@ -1,0 +1,5 @@
+{
+  "types": ["bytes32"],
+  "argument_names": ["symbol_"],
+  "values": ["EOS"]
+}
