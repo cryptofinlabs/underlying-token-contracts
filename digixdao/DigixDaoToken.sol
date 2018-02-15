@@ -399,7 +399,7 @@ contract Badge {
 
 }
 
-contract Token {
+contract DigixDaoToken {
 
         address public owner;
         address public config;
@@ -433,7 +433,7 @@ contract Token {
         event Mint(address indexed _recipient, uint256 _amount);
         event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 
-        function Token(address _config) {
+        function DigixDaoToken(address _config) {
                 config = _config;
                 owner = msg.sender;
                 address _initseller = ConfigInterface(_config).getConfigAddress("sale1:address");

@@ -146,7 +146,7 @@ contract IcxToken is ERC20, Lockable {
         _;
     }
 
-    function IcxToken( uint initial_balance, address wallet) {
+    function IcxToken(uint initial_balance, address wallet) {
         require(wallet != 0);
         require(initial_balance != 0);
         _balances[msg.sender] = initial_balance;
