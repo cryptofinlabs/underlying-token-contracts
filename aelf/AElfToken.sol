@@ -128,7 +128,7 @@ contract AElfToken is ERC20, Ownable {
     // the lock time of minted tokens
     uint256 public durationOfLock = 7200;
     // True if transfers are allowed
-    bool public transferable = false;
+    bool public transferable = true;
     // True if the transferable can be change
     bool public canSetTransferable = true;
 
