@@ -340,7 +340,7 @@ contract RepToken is Initializable, PausableToken {
   /**
     * @dev Unpauses the contract with the caveat added that it can only happen after initialization.
     */
-  function unpause() onlyOwner whenPaused afterInitialized returns (bool) {
+  function unpause() onlyOwner whenPaused returns (bool) {
     super.unpause();
     return true;
   }
