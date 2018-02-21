@@ -169,7 +169,7 @@ contract AElfToken is ERC20, Ownable {
      * @param _to The address to transfer to.
      * @param _value The amount to be transferred.
      */
-    function transfer(address _to, uint256 _value) canTransfer public returns (bool) {
+    function transfer(address _to, uint256 _value) public returns (bool) {
         require(_to != address(0));
         require(_value <= balances[msg.sender]);
 
@@ -217,7 +217,7 @@ contract AElfToken is ERC20, Ownable {
      * @param _spender The address which will spend the funds.
      * @param _value The amount of tokens to be spent.
      */
-    function approve(address _spender, uint256 _value) canTransfer public returns (bool) {
+    function approve(address _spender, uint256 _value) public returns (bool) {
         allowed[msg.sender][_spender] = _value;
         Approval(msg.sender, _spender, _value);
         return true;
@@ -314,7 +314,7 @@ contract AElfToken is ERC20, Ownable {
      * @param _amount The quantity of tokens approved of mintting
      * @return True if the tokens are approved of mintting correctly
      */
-    function approveMintTokens(address _owner, uint256 _amount) nonZeroAddress(_owner) canMint only(aelfCommunityMultisig) public returns (bool) {
+    function approveMintTokens(address _owner, uint256 _amount) nonZeroAddress(_owner) public returns (bool) {
         require(_amount > 0);
         uint256 previousLockTokens = lockTokens[_owner].value;
         require(previousLockTokens + _amount >= previousLockTokens);
@@ -351,8 +351,7 @@ contract AElfToken is ERC20, Ownable {
      * @param _owner The address that will be assigned the new tokens
      * @return True if the tokens are minted correctly
      */
-    function mintTokens(address _owner) canMint only(aelfDevMultisig) nonZeroAddress(_owner) public returns (bool) {
-        require(lockTokens[_owner].blockNumber <= getCurrentBlockNumber());
+    function mintTokens(address _owner) public returns (bool) {
         uint256 _amount = lockTokens[_owner].value;
         uint256 curTotalSupply = totalSupply;
         require(curTotalSupply + _amount >= curTotalSupply); // Check for overflow
@@ -441,3 +440,4 @@ contract AElfToken is ERC20, Ownable {
         return block.number;
     }
 }
+
