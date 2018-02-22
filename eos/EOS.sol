@@ -339,16 +339,16 @@ contract DSTokenBase is ERC20, DSMath {
 
 }
 
-contract DSToken is DSTokenBase(0), DSStop {
+contract EOS is DSTokenBase(0), DSStop {
 
     bytes32  public  symbol;
     uint256  public  decimals = 18; // standard token precision. override to customize
 
-    function DSToken(bytes32 symbol_) {
+    function EOS(bytes32 symbol_) {
         symbol = symbol_;
     }
 
-    function transfer(address dst, uint wad) stoppable note returns (bool) {
+    function transfer(address dst, uint wad) returns (bool) {
         return super.transfer(dst, wad);
     }
     function transferFrom(
@@ -356,7 +356,7 @@ contract DSToken is DSTokenBase(0), DSStop {
     ) stoppable note returns (bool) {
         return super.transferFrom(src, dst, wad);
     }
-    function approve(address guy, uint wad) stoppable note returns (bool) {
+    function approve(address guy, uint wad) returns (bool) {
         return super.approve(guy, wad);
     }
 
@@ -367,7 +367,7 @@ contract DSToken is DSTokenBase(0), DSStop {
         return transferFrom(src, msg.sender, wad);
     }
 
-    function mint(uint128 wad) auth stoppable note {
+    function mint(uint128 wad) note {
         _balances[msg.sender] = add(_balances[msg.sender], wad);
         _supply = add(_supply, wad);
     }
