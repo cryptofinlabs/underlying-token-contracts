@@ -218,7 +218,7 @@ contract NebulasToken is StandardToken, SafeMath {
 
     /// @dev allocates NAS tokens to pre-sell address.
     function allocateToken (address _addr, uint256 _eth) isOwner external {
-        if (_eth == 0) throw;
+        // if (_eth == 0) throw;
         if (_addr == address(0x0)) throw;
 
         uint256 tokens = safeMult(formatDecimals(_eth), tokenExchangeRate);
