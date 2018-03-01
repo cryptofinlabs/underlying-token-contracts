@@ -1,9 +1,9 @@
 let abi = require("ethereumjs-abi");
 
-let tokens = ["QASH", "0x", "populous", "Loopring", "vechain", "Aeternity", "binance-coin", "IOSToken", "powerledger", "qtum", "Status", "augur", "nebulas", "Walton", "OmiseGo", "tron", "Dragon", "Kyber", "aelf", "golem", "BytomToken", "digixdao", "eos", "basic-attention-token", "Zilliqa"];
+let tokens = ["QASH", "0x", "populous", "Loopring", "vechain", "ADXToken", "Aeternity", "binance-coin", "IOSToken", "powerledger", "qtum", "Status", "augur", "nebulas", "Walton", "OmiseGo", "tron", "Dragon", "Kyber", "aelf", "golem", "BytomToken", "digixdao", "eos", "basic-attention-token", "Zilliqa"];
 for (let token of tokens) {
   try {
-    let args = require(`./${token}/args.json`);
+    let args = require(`./${token}/${token}.json`);
     let decodedBuffer = abi.rawDecode(args.types, new Buffer(args.rawdata, 'hex'));
     let decodedString = decodedBuffer.toString('hex');
     let decodedValues = decodedString.split(',');
