@@ -422,7 +422,34 @@ contract ReleasableToken is ERC20, Ownable {
 }
 
 
+library SafeMathAlt {
+    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+        if (a == 0) {
+            return 0;
+        }
+        uint256 c = a * b;
+        assert(c / a == b);
+        return c;
+    }
 
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
+        // assert(b > 0); // Solidity automatically throws when dividing by 0
+        uint256 c = a / b;
+        // assert(a == b * c + a % b); // There is no case in which this doesn't hold
+        return c;
+    }
+
+    function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+        assert(b <= a);
+        return a - b;
+    }
+
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c = a + b;
+        assert(c >= a);
+        return c;
+    }
+}
 
 
 /**
@@ -459,8 +486,6 @@ library SafeMathLib {
   }
 }
 
-
-
 /**
  * A token that can increase its supply by another contract.
  *
@@ -470,7 +495,7 @@ library SafeMathLib {
  */
 contract MintableToken is StandardToken, Ownable {
 
-  using SafeMathLib for uint;
+  using SafeMathAlt for uint;
 
   bool public mintingFinished = false;
 
@@ -485,8 +510,8 @@ contract MintableToken is StandardToken, Ownable {
    * Only callably by a crowdsale contract (mint agent).
    */
   function mint(address receiver, uint amount) onlyMintAgent canMint public {
-    totalSupply = totalSupply.plus(amount);
-    balances[receiver] = balances[receiver].plus(amount);
+    totalSupply = totalSupply.add(amount);
+    balances[receiver] = balances[receiver].add(amount);
 
     // This will make the mint transaction apper in EtherScan.io
     // We can remove this after there is a standardized minting event
@@ -620,9 +645,9 @@ contract CrowdsaleToken is ReleasableToken, MintableToken, UpgradeableToken {
  * A crowdsaled token that you can also burn.
  *
  */
-contract BurnableCrowdsaleToken is BurnableToken, CrowdsaleToken {
+contract Populous is BurnableToken, CrowdsaleToken {
 
-  function BurnableCrowdsaleToken(string _name, string _symbol, uint _initialSupply, uint _decimals, bool _mintable)
+  function Populous(string _name, string _symbol, uint _initialSupply, uint _decimals, bool _mintable)
     CrowdsaleToken(_name, _symbol, _initialSupply, _decimals, _mintable) {
 
   }
